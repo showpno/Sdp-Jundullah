@@ -20,22 +20,22 @@ jobs:
       
       - name: Get dependencies for Client
         run: |
-          cd Update-jundullah/Client_panel/client_side
+          cd Client_panel/client_side
           flutter pub get
       
       - name: Build Client APK (Release)
         run: |
-          cd Update-jundullah/Client_panel/client_side
+          cd Client_panel/client_side
           flutter build apk --release
       
       - name: Get dependencies for Admin
         run: |
-          cd Update-jundullah/Client_panel/Admin_panel
+          cd Client_panel/Admin_panel
           flutter pub get
       
       - name: Build Admin APK (Release)
         run: |
-          cd Update-jundullah/Client_panel/Admin_panel
+          cd Client_panel/Admin_panel
           flutter build apk --release
       
       - name: Upload APKs to Artifacts
@@ -44,8 +44,8 @@ jobs:
         with:
           name: flutter-apks
           path: |
-            Update-jundullah/Client_panel/client_side/build/app/outputs/apk/release/app-release.apk
-            Update-jundullah/Client_panel/Admin_panel/build/app/outputs/apk/release/app-release.apk
+            Client_panel/client_side/build/app/outputs/apk/release/app-release.apk
+            Client_panel/Admin_panel/build/app/outputs/apk/release/app-release.apk
           retention-days: 30
       
       - name: Create Release
@@ -53,5 +53,5 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            Update-jundullah/Client_panel/client_side/build/app/outputs/apk/release/app-release.apk
-            Update-jundullah/Client_panel/Admin_panel/build/app/outputs/apk/release/app-release.apk
+            Client_panel/client_side/build/app/outputs/apk/release/app-release.apk
+            Client_panel/Admin_panel/build/app/outputs/apk/release/app-release.apk
