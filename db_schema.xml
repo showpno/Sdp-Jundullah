@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="Jundullah_ECommerce_Schema">
+    <table name="Brand">
+        <column name="name" type="String" required="true"/>
+        <column name="subcategoryId" type="ObjectId" required="true" references="SubCategory"/>
+        <column name="createdAt" type="Date"/>
+        <column name="updatedAt" type="Date"/>
+    </table>
+
+    <table name="Category">
+        <column name="name" type="String" required="true"/>
+        <column name="image" type="String" required="true"/>
+        <column name="createdAt" type="Date"/>
+        <column name="updatedAt" type="Date"/>
+    </table>
+
+    <table name="Coupon">
+        <column name="couponCode" type="String" required="true" unique="true"/>
+        <column name="discountType" type="String" required="true" enum="fixed,percentage"/>
+        <column name="discountAmount" type="Number" required="true"/>
+        <column name="minimumPurchaseAmount" type="Number" required="true"/>
+        <column name="endDate" type="Date" required="true"/>
+        <column name="status" type="String" default="active" enum="active,inactive"/>
+        <column name="applicableCategory" type="ObjectId" references="Category"/>
+        <column name="applicableSubCategory" type="ObjectId" references="SubCategory"/>
+        <column name="applicableProduct" type="ObjectId" references="Product"/>
+        <column name="createdAt" type="Date"/>
+        <column name="updatedAt" type="Date"/>
+    </table>
+
+    <table name="Notification">
+        <column name="notificationId" type="String" required="true" unique="true"/>
+        <column name="title" type="String" required="true"/>
+        <column name="description" type="String" required="true"/>
+        <column name="imageUrl" type="String"/>
+        <column name="createdAt" type="Date"/>
+        <column name="updatedAt" type="Date"/>
+    </table>
+
+    <table name="Order">
+        <column name="userID" type="ObjectId" required="true" references="User"/>
+        <column name="orderDate" type="Date" default="Date.now"/>
+        <column name="orderStatus" type="String" default="Pending" enum="Pending,Processing,Shipped,Delivered,Cancelled"/>
+        <column name="items" type="Array" structure="embedded_OrderItem"/>
+        <column name="totalPrice" type="Number" required="true"/>
+        <column name="shippingAddress" type="Object"/>
+        <column name="paymentMethod" type="String" enum="COD,Prepaid"/>
+        <column name="couponCode" type="ObjectId" references="Coupon"/>
+        <column name="orderTotal" type="Object"/>
+        <column name="trackingUrl" type="String"/>
+    </table>
+    <structure name="embedded_OrderItem">
+         <column name="productID" type="ObjectId" required="true" references="Product"/>
+         <column name="productName" type="String" required="true"/>
+         <column name="quantity" type="Number" required="true"/>
+         <column name="price" type="Number" required="true"/>
+         <column name="variant" type="String"/>
+    </structure>
+
+    <table name="Poster">
+        <column name="posterName" type="String" required="true"/>
+        <column name="imageUrl" type="String" required="true"/>
+        <column name="createdAt" type="Date"/>
+        <column name="updatedAt" type="Date"/>
+    </table>
+
+    <table name="Product">
+        <column name="name" type="String" required="true"/>
+        <column name="description" type="String"/>
+        <column name="quantity" type="Number" required="true"/>
+        <column name="price" type="Number" required="true"/>
+        <column name="offerPrice" type="Number"/>
+        <column name="proCategoryId" type="ObjectId" required="true" references="Category"/>
+        <column name="proSubCategoryId" type="ObjectId" required="true" references="SubCategory"/>
+        <column name="proBrandId" type="ObjectId" references="Brand"/>
+        <column name="proVariantTypeId" type="ObjectId" references="VariantType"/>
+        <column name="proVariantId" type="Array" items="String"/>
+        <column name="images" type="Array"/>
+        <column name="createdAt" type="Date"/>
+        <column name="updatedAt" type="Date"/>
+    </table>
+
+    <table name="SubCategory">
+        <column name="name" type="String" required="true"/>
+        <column name="categoryId" type="ObjectId" required="true" references="Category"/>
+        <column name="createdAt" type="Date"/>
+        <column name="updatedAt" type="Date"/>
+    </table>
+
+    <table name="User">
+        <column name="name" type="String" required="true"/>
+        <column name="password" type="String" required="true"/>
+        <column name="createdAt" type="Date" default="Date.now"/>
+        <column name="updatedAt" type="Date" default="Date.now"/>
+    </table>
+
+    <table name="Variant">
+        <column name="name" type="String" required="true"/>
+        <column name="variantTypeId" type="ObjectId" required="true" references="VariantType"/>
+        <column name="createdAt" type="Date"/>
+        <column name="updatedAt" type="Date"/>
+    </table>
+
+    <table name="VariantType">
+        <column name="name" type="String" required="true"/>
+        <column name="type" type="String" required="true"/>
+        <column name="createdAt" type="Date"/>
+        <column name="updatedAt" type="Date"/>
+    </table>
+</database>
