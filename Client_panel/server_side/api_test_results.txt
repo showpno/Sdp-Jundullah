@@ -1,0 +1,9 @@
+﻿Endpoint: / - Status: 200
+Endpoint: /categories - Status: 200
+Endpoint: /subCategories - Status: 200
+Endpoint: /brands - Status: 200
+Endpoint: /couponCodes - Status: 200
+Endpoint: /posters - Status: 200
+Endpoint: /products - Status: 200
+Endpoint: /orders - Status: 200
+Endpoint: /users - Status: 200

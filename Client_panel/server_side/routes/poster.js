@@ -101,7 +101,7 @@ router.put(
   "/:id",
   asyncHandler(async (req, res) => {
     try {
-      const categoryID = req.params.id;
+      const posterID = req.params.id;
       uploadPosters.single("img")(req, res, async function (err) {
         if (err instanceof multer.MulterError) {
           if (err.code === "LIMIT_FILE_SIZE") {
@@ -129,7 +129,7 @@ router.put(
 
         try {
           const updatedPoster = await Poster.findByIdAndUpdate(
-            categoryID,
+            posterID,
             { posterName: posterName, imageUrl: image },
             { new: true }
           );

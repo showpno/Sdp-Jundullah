@@ -1,4 +1,4 @@
-vconst express = require("express");
+const express = require("express");
 const router = express.Router();
 const Category = require("../model/category");
 const SubCategory = require("../model/subCategory");
