@@ -6,7 +6,7 @@ const bgColor = Color(0xFF212332);
 const defaultPadding = 16.0;
 
 // TODO: change according to yours
-const MAIN_URL = 'http://localhost:5000';  // Updated to match server port
+const MAIN_URL = 'http://192.168.43.253:5000';  // Updated to match server port and local IP
 const currency_symbol = "৳";
 
 // product summary info

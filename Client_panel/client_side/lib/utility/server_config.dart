@@ -13,7 +13,7 @@ class ServerConfig {
   // You can find it by running 'ipconfig' on Windows or 'ifconfig' on Mac/Linux
   // Look for "IPv4 Address" under your active network adapter (usually Wi-Fi or Ethernet)
   // IMPORTANT: Both your computer and phone must be on the same Wi-Fi network!
-  static const String? manualPhysicalDeviceIP = '192.168.0.247'; // Set to your Wi-Fi IP address
+  static const String? manualPhysicalDeviceIP = '192.168.43.253'; // Set to your Wi-Fi IP address
 
   // Cache for server URL
   static String? _cachedServerUrl;

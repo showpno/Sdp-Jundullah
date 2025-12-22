@@ -1,4 +1,4 @@
-const express = require("express");
+vconst express = require("express");
 const router = express.Router();
 const Category = require("../model/category");
 const SubCategory = require("../model/subCategory");
@@ -58,10 +58,10 @@ router.post(
             err.message = "File size is too large. Maximum filesize is 5MB.";
           }
           console.log(`Add category: ${err}`);
-          return res.json({ success: false, message: err });
+          return res.json({ success: false, message: err.message });
         } else if (err) {
           console.log(`Add category: ${err}`);
-          return res.json({ success: false, message: err });
+          return res.json({ success: false, message: err.message || "An error occurred" });
         }
         const { name } = req.body;
         let imageUrl = "no_url";

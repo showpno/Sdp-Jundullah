@@ -230,6 +230,10 @@
     if ("serviceWorker" in navigator) {
       window.addEventListener("flutter-first-frame", function () {
         navigator.serviceWorker.register("flutter_service_worker.js");
+        var loadingIndicator = document.getElementById("load");
+        if (loadingIndicator) {
+          loadingIndicator.remove();
+        }
       });
     }
 </script>
@@ -238,7 +242,7 @@
 <script>
     window.onload = function () {
       setTimeout(function () {
-        var loadingIndicator = document.getElementById("loading_container");
+        var loadingIndicator = document.getElementById("load");
         if (loadingIndicator) {
           loadingIndicator.remove();
         }

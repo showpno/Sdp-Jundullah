@@ -79,7 +79,7 @@ router.post(
         } else if (err) {
           // Handle other errors, if any
           console.log(`Add product: ${err}`);
-          return res.json({ success: false, message: err });
+          return res.json({ success: false, message: err.message || "An error occurred" });
         }
 
         // Extract product data from the request body
